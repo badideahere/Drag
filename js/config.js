@@ -18,7 +18,7 @@
 export const CONFIG = {
   // ---- REPLACE THIS ------------------------------------------------------
   // Looks like: 'https://abcdefghijklmnop.supabase.co'
-  SUPABASE_URL: 'https://mkqubytbhxhisguwrtts.supabase.co/rest/v1/',
+  SUPABASE_URL: 'https://mkqubytbhxhisguwrtts.supabase.co/auth/v1/signup',
 
   // ---- REPLACE THIS ------------------------------------------------------
   // Long string beginning with 'sb_publishable_' or 'eyJ...'
