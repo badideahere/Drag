@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STAGED — Drag Simulator</title>
+<meta name="description" content="A browser drag racing simulator with a real engine, clutch, gearbox and tire model. Build a car, tune it, launch it, break it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"></span>
+      <span class="brand-name">STAGED</span>
+      <span class="brand-sub">Drag Simulator</span>
+    </a>
+    <nav class="main-nav"></nav>
+    <div class="header-right">
+      <a class="btn ghost small" href="login.html">Log in</a>
+      <a class="btn primary small" href="register.html">Create account</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Staged</h1>
+    <p class="hero-tagline">Pre-stage · Stage · Green</p>
+    <p class="hero-blurb">
+      A drag racing simulator that models the whole chain — throttle to torque curve,
+      clutch to gearbox to differential to tire contact patch. Heat the tires, leave on
+      the amber, catch the shift. Miss it and you will hear the valvetrain find out.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary large" href="register.html">Start a career</a>
+      <a class="btn large" href="login.html">I already have an account</a>
+    </div>
+  </div>
+</section>
+
+<section class="feature-grid">
+  <div class="feature">
+    <h3>A real driveline</h3>
+    <p>
+      Engine rpm comes from wheel speed through the gears when the clutch is locked, and
+      from the crank's own inertia when it is not. Nothing teleports. Select second at
+      110&nbsp;mph and the wheels will drag the engine past the limiter whether it likes it or not.
+    </p>
+  </div>
+  <div class="feature">
+    <h3>Damage you caused</h3>
+    <p>
+      Engine, gearbox, clutch and tire health are tracked separately and persist until you
+      pay to fix them. Nothing fails at random — every point of wear traces back to something
+      you did with your right foot.
+    </p>
+  </div>
+  <div class="feature">
+    <h3>Three ways to drive</h3>
+    <p>
+      Arcade handles the clutch and gears for you on the same physics. Manual gives you the
+      shifter. Realistic gives you all three pedals, and the ability to stall it on the
+      startline in front of everyone.
+    </p>
+  </div>
+  <div class="feature">
+    <h3>Honest upgrades</h3>
+    <p>
+      Every part changes simulation variables — cam timing shifts the torque curve, a bigger
+      turbo changes spool and lag, forged rods raise the rpm the engine survives. The dyno
+      graph is produced by the same code that drives the car.
+    </p>
+  </div>
+  <div class="feature">
+    <h3>Opponents who drive</h3>
+    <p>
+      The AI runs its own vehicle through the same physics with its own gearing, launch rpm
+      and temperament. It can bog, spin the tires, shift early or red-light. There is no
+      speed multiplier anywhere.
+    </p>
+  </div>
+  <div class="feature">
+    <h3>Progress that follows you</h3>
+    <p>
+      Money, cars, upgrades, tunes, wear and best times live in the cloud. Log in from
+      anywhere and your garage is exactly as you left it.
+    </p>
+  </div>
+</section>
+
+<script type="module">
+  // If the player is already signed in, skip the sales pitch.
+  import { getSession } from './js/net/auth.js';
+  import { configError } from './js/net/supabase.js';
+  import { pageUrl } from './js/config.js';
+
+  if (configError) {
+    const warn = document.createElement('div');
+    warn.className = 'config-warning';
+    warn.style.cssText = 'position:fixed;left:50%;bottom:16px;transform:translateX(-50%);max-width:640px;z-index:99';
+    warn.textContent = configError;
+    document.body.appendChild(warn);
+  } else {
+    getSession().then((s) => {
+      if (!s) return;
+      const right = document.querySelector('.header-right');
+      right.innerHTML = '';
+      const a = document.createElement('a');
+      a.className = 'btn primary small';
+      a.href = pageUrl('garage.html');
+      a.textContent = 'Go to garage';
+      right.appendChild(a);
+    });
+  }
+</script>
+
+</body>
+</html>

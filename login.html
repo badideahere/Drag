@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — STAGED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body class="auth-page">
+
+<div class="auth-card" id="auth-card">
+  <div class="auth-brand">
+    <span class="brand-name">STAGED</span>
+  </div>
+
+  <div class="config-warning" id="config-warning" hidden></div>
+
+  <h1>Sign in</h1>
+  <p class="muted">Your garage is waiting.</p>
+
+  <form class="auth-form" id="login-form" novalidate>
+    <label class="field">
+      <span>Email</span>
+      <input class="input" id="email" type="email" autocomplete="email" required>
+    </label>
+    <label class="field">
+      <span>Password</span>
+      <input class="input" id="password" type="password" autocomplete="current-password" required>
+    </label>
+    <button class="btn primary large" type="submit">Sign in</button>
+  </form>
+
+  <div class="auth-foot">
+    <a href="#" id="forgot-link">Forgot your password?</a>
+    <br>
+    No account yet? <a href="register.html">Create one</a>
+  </div>
+</div>
+
+<script type="module">
+  import { initLogin } from './js/ui/authpages.js';
+  initLogin();
+</script>
+
+</body>
+</html>

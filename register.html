@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create account — STAGED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body class="auth-page">
+
+<div class="auth-card" id="auth-card">
+  <div class="auth-brand">
+    <span class="brand-name">STAGED</span>
+  </div>
+
+  <div class="config-warning" id="config-warning" hidden></div>
+
+  <h1>Create account</h1>
+  <p class="muted">You start with a set of keys and enough money for a first pass.</p>
+
+  <form class="auth-form" id="register-form" novalidate>
+    <label class="field">
+      <span>Driver name</span>
+      <input class="input" id="username" type="text" autocomplete="nickname" maxlength="24" required>
+    </label>
+    <label class="field">
+      <span>Email</span>
+      <input class="input" id="email" type="email" autocomplete="email" required>
+    </label>
+    <label class="field">
+      <span>Password</span>
+      <input class="input" id="password" type="password" autocomplete="new-password" minlength="6" required>
+    </label>
+    <label class="field">
+      <span>Confirm password</span>
+      <input class="input" id="password2" type="password" autocomplete="new-password" minlength="6" required>
+    </label>
+    <button class="btn primary large" type="submit">Create account</button>
+  </form>
+
+  <div class="auth-foot">
+    Already racing? <a href="login.html">Sign in</a>
+  </div>
+</div>
+
+<script type="module">
+  import { initRegister } from './js/ui/authpages.js';
+  initRegister();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+/* css/game.css — the race page.
+   The track canvas fills the viewport below the header; every panel floats on
+   top of it so the car is never hidden by chrome you are not reading. */
+
+html, body { height: 100%; overflow: hidden; }
+
+.game-shell {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - var(--header-h));
+  overflow: hidden;
+  background: #0d0f13;
+}
+
+#track-canvas,
+#hud-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#hud-canvas { pointer-events: none; z-index: 5; }
+
+/* ------------------------------------------------------------- hint bar */
+
+#hint-bar {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 8;
+  padding: 8px 18px;
+  background: rgba(14, 16, 20, 0.86);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-family: var(--head);
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------- panels */
+
+.game-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow-y: auto;
+  background:
+    radial-gradient(900px 500px at 50% 0%, rgba(255, 176, 0, 0.06), transparent 60%),
+    rgba(10, 12, 16, 0.93);
+  backdrop-filter: blur(6px);
+}
+
+.screen-title {
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* ---------------------------------------------------------- race setup */
+
+.setup-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 34px 26px 60px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.setup-col { min-width: 0; }
+
+.car-preview {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: linear-gradient(180deg, #1a1e25, #101318);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.setup-actions { display: flex; gap: 12px; margin: 22px 0 26px; }
+.setup-actions .btn { flex: 1; }
+
+.controls-hint {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--steel-light);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  background: rgba(0, 0, 0, 0.22);
+}
+.controls-hint h3 { margin-bottom: 8px; }
+.controls-hint ul { margin: 0; padding-left: 16px; }
+.controls-hint li { font-size: 0.86rem; color: var(--text-dim); margin-bottom: 3px; }
+
+/* ------------------------------------------------------------- results */
+
+.result-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 26px 60px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-areas:
+    "head head"
+    "slip side"
+    "actions actions";
+  gap: 24px;
+  align-items: start;
+}
+
+.result-head { grid-area: head; text-align: center; }
+.result-head h1 {
+  font-size: 3.4rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.result-head.win h1 { color: var(--green); text-shadow: 0 0 34px rgba(47, 211, 95, 0.35); }
+.result-head.loss h1 { color: var(--red); text-shadow: 0 0 34px rgba(229, 52, 42, 0.3); }
+.result-head p { color: var(--text-dim); font-family: var(--head); letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* The timeslip is deliberately a piece of paper: off-white, monospaced,
+   printed in two columns exactly like the one the tower hands you. */
+.timeslip {
+  grid-area: slip;
+  background: #e9e6df;
+  color: #15171c;
+  border-radius: 3px;
+  padding: 18px 20px 22px;
+  box-shadow: var(--shadow);
+  font-family: var(--mono);
+}
+.timeslip-head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #15171c;
+  padding-bottom: 7px;
+  margin-bottom: 14px;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+}
+.timeslip-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.timeslip-col h3 {
+  font-family: var(--head);
+  font-size: 1rem;
+  color: #15171c;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  border-bottom: 1px solid #15171c;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+.timeslip .ts-row { border-bottom: 1px dotted rgba(21, 23, 28, 0.32); }
+.timeslip .ts-row span { color: #5a5f66; font-size: 0.76rem; letter-spacing: 0.06em; }
+.timeslip .ts-row b { color: #15171c; }
+.timeslip .dial {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  border: 1px solid #15171c;
+  padding: 1px 6px;
+  margin-bottom: 7px;
+}
+
+.result-side { grid-area: side; display: flex; flex-direction: column; gap: 16px; }
+
+.payout {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  text-align: center;
+}
+.payout-amount { font-family: var(--head); font-size: 2.6rem; font-weight: 700; line-height: 1.1; }
+.payout-amount.plus { color: var(--green); }
+.payout-amount.minus { color: var(--red); }
+.pb {
+  margin-top: 8px;
+  display: inline-block;
+  font-family: var(--head);
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  color: #1b1408;
+  background: var(--amber);
+  padding: 2px 10px;
+  border-radius: 2px;
+}
+
+.damage-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--red);
+  border-radius: var(--radius-lg);
+  padding: 15px 18px;
+}
+.damage-box h3 { margin-bottom: 8px; }
+
+.result-actions { grid-area: actions; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* --------------------------------------------------------------- pause */
+
+/* Only apply the centering grid while the panel is actually shown — an
+   unconditional display:grid here would override the [hidden] attribute's
+   default display:none and leave an empty, still-painted 93%-opacity panel
+   permanently stacked on top of the game, darkening everything beneath it
+   even when nothing is paused. */
+#pause-panel:not([hidden]) { display: grid; place-items: center; }
+
+.pause-box {
+  width: min(520px, 92vw);
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  padding: 26px 28px;
+  box-shadow: var(--shadow);
+}
+.pause-box h2 {
+  font-size: 2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.pause-settings { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 0; margin-bottom: 20px; }
+.pause-actions { display: flex; flex-direction: column; gap: 9px; }
+.pause-actions .btn { width: 100%; }
+
+/* --------------------------------------------------------- responsive */
+
+@media (max-width: 1000px) {
+  .setup-inner { grid-template-columns: 1fr; gap: 26px; }
+  .result-inner {
+    grid-template-columns: 1fr;
+    grid-template-areas: "head" "slip" "side" "actions";
+  }
+}
+
+@media (max-width: 700px) {
+  .timeslip-cols { grid-template-columns: 1fr; gap: 16px; }
+  .result-head h1 { font-size: 2.3rem; }
+  #hint-bar { white-space: normal; max-width: 90vw; text-align: center; }
+}

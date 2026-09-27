@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Race — STAGED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<div class="game-shell">
+  <!-- The track. Everything below floats on top of it. -->
+  <canvas id="track-canvas"></canvas>
+  <canvas id="hud-canvas" hidden></canvas>
+
+  <div id="hint-bar" hidden></div>
+
+  <section class="game-panel" id="setup-panel"></section>
+  <section class="game-panel" id="result-panel" hidden></section>
+  <section class="game-panel" id="pause-panel" hidden></section>
+</div>
+
+<script type="module" src="js/game/main.js"></script>
+
+</body>
+</html>
