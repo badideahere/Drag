@@ -18,17 +18,17 @@
 export const CONFIG = {
   // ---- REPLACE THIS ------------------------------------------------------
   // Looks like: 'https://abcdefghijklmnop.supabase.co'
-  SUPABASE_URL: 'https://mkqubytbhxhisguwrtts.supabase.co/auth/v1/signup',
+  SUPABASE_URL: 'https://mkqubytbhxhisguwrtts.supabase.co',
 
   // ---- REPLACE THIS ------------------------------------------------------
   // Long string beginning with 'sb_publishable_' or 'eyJ...'
-  SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_Y6XeAtC0qptXAo5RX63sAg_J17aAVsd',
+  SUPABASE_PUBLISHABLE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rcXVieXRiaHhoaXNndXdydHRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA0NTc3MDEsImV4cCI6MjEwNjAzMzcwMX0.S4f1tV6nE93NtOFppSlwMF7t8Nj6fbO2fkTXER8agNw',
 
   // ---- REPLACE THIS ------------------------------------------------------
   // Where the game is hosted. Used for password-reset redirects.
   // GitHub Pages looks like: 'https://YOURNAME.github.io/REPOSITORY'
   // For local testing you can use: 'http://localhost:8080'
-  SITE_ORIGIN: 'https://badideahere.github.io/Drag',
+  SITE_ORIGIN: 'https://badideahere.github.io/Drag/',
 
   // ---- Gameplay defaults (safe to change) --------------------------------
   // These are MIRRORED server-side in supabase/migrations/001_schema.sql.
